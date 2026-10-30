@@ -1,0 +1,1075 @@
+<!DOCTYPE html><html lang="kn"><head><base target="_top"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+:root{--navy:#0967b2;--blue:#0967b2;--bg:#f1f6fc;--line:#d7e0e8;--text:#17212b}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Kannada",sans-serif;background:var(--bg);color:var(--text)}
+header{background:var(--navy);color:#fff;padding:16px 22px}header h1{margin:0 0 5px;font-size:22px}header p{margin:0;opacity:.95;font-size:13px}
+.brandrow{display:flex;align-items:center;gap:12px}.brandlogo{width:46px;height:46px;border-radius:10px;background:#fff;color:#075da5;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:11px;text-align:center;line-height:1.1;flex-shrink:0}.brandtext h1{font-size:22px;margin:0 0 3px}.tabbar{display:flex;gap:8px;background:#fff;padding:10px 14px;border-bottom:1px solid var(--line)}.tabbtn{background:#e8eef5;color:#173b5a}.tabbtn.active{background:#ff8a20;color:#fff}.tabPage.hidden{display:none}
+main{max-width:1300px;margin:18px auto;padding:0 14px 30px}.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 2px 8px #1020300b}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center}input,select,textarea{width:100%;padding:10px 11px;border:1px solid #bccbd8;border-radius:7px;font:inherit;background:#fff}
+label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}.formgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.wide{grid-column:span 2}
+button{border:0;border-radius:7px;padding:10px 14px;font-weight:bold;cursor:pointer}.primary{background:var(--blue);color:white}.secondary{background:#e7eef5;color:#183b58}.danger{background:#ffeded;color:#9b1c1c}
+.search{flex:1;min-width:220px}.status{margin-top:10px;font-size:14px}.ok{color:#137044}.err{color:#a31e1e}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:950px;background:white}th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;font-size:13px;vertical-align:top}th{background:#e9f0f6;color:#173b5a;position:sticky;top:0}
+.actions{white-space:nowrap;display:flex;gap:6px}.count{font-size:13px;color:#526579;margin:10px 0}.hint{color:#526579;font-size:12px;line-height:1.5}.hidden{display:none}
+@media(max-width:800px){.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.wide{grid-column:span 2}header h1{font-size:19px}}
+@media(max-width:460px){.formgrid{grid-template-columns:1fr}.wide{grid-column:span 1}main{padding:0 8px 20px;margin-top:10px}.panel{padding:12px}}
+
+.ntdHero{max-width:760px;margin:0 auto 12px;background:#0967b2;color:#fff;padding:14px 16px 18px;border-radius:0 0 22px 22px}.ntdSearchRow{display:flex;gap:7px;background:#fff;padding:5px;border-radius:12px}.ntdSearchRow input{border:0;background:#f3f6fa;min-width:0;flex:1;font-size:16px}.ntdSearchBtn{background:#ff8a20;color:#fff;min-width:80px}.ntdHint{font-size:11px;font-weight:bold;margin:7px 2px 0}.ntdPanel{max-width:760px;margin:0 auto;background:#fff;border:1px solid #d7e2ef;border-radius:14px;padding:12px;box-shadow:0 2px 8px #1020300a}.ntdPanel h3{font-size:14px;margin:3px 0 8px}.ntdGrid{display:grid;grid-template-columns:minmax(0,1fr) 62px minmax(0,1fr);gap:6px;margin-bottom:10px}.ntdCard{border-radius:11px;padding:17px 11px;min-height:84px;display:flex;flex-direction:column;justify-content:center;gap:7px;font-size:14px;overflow-wrap:anywhere}.ntdCard b{font-size:15px}.ntdCard small{font-size:10px}.nsh{background:#dceeff;border:1px solid #c8dff7}.ich,.l2{background:#fff0b8;border:1px solid #f4d76c}.l1{background:#ddf6da;border:1px solid #b6e8ad}.rms1{background:#fce0ec;border:1px solid #f5b6d0}.rms2{background:#ddf6ff;border:1px solid #a6e7fb}.ntdArrow{background:#ff7b22;color:white;border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;font-weight:bold}.ntdOfficeInfo{font-size:12px;color:#294b67;margin-top:10px}.ntdStatus{font-size:12px;margin-top:8px;color:#3b5b77}.ntdStatus.err{color:#a31e1e}.ntdMatches{margin-top:10px}.ntdMatch{padding:9px;border:1px solid #d8e4ef;border-radius:8px;margin-top:6px;cursor:pointer;font-size:12px}.ntdMatch:hover{background:#f3f8fd}.ntdResultsWrap{margin-top:12px;overflow:auto;border:1px solid #d7e2ef;border-radius:8px;background:#fff}.ntdResults{border-collapse:collapse;width:100%;min-width:650px}.ntdResults th,.ntdResults td{padding:9px 10px;border-bottom:1px solid #d7e2ef;text-align:left;font-size:12px}.ntdResults th{background:#e9f0f6;color:#173b5a;position:sticky;top:0}.ntdResults tbody tr{cursor:pointer}.ntdResults tbody tr:hover{background:#f3f8fd}.ntdFooter{text-align:center;font-size:10px;color:#7890a8;padding:18px 0 4px;line-height:1.8}
+@media(max-width:460px){.ntdGrid{grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);gap:4px}.ntdCard{padding:12px 7px;font-size:12px;min-height:78px}.ntdArrow{font-size:10px}.ntdHero{padding:12px}.ntdPanel{margin:0 8px}}
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body><header><div class="brandrow"><div class="brandlogo">INDIA<br>POST</div><div class="brandtext"><h1>All India NTD Sorting</h1><p>All India RMS • PIN &amp; Hub Mapping</p></div></div></header>
+<div class="tabbar"><button id="tabNtdBtn" class="tabbtn active" onclick="switchTab('ntd')">All India NTD Sorting</button><button id="tabDeliveryBtn" class="tabbtn" onclick="switchTab('delivery')">TD Villages Sorting</button></div>
+<main id="ntdTab" class="tabPage">
+<section class="ntdHero"><div class="ntdSearchRow"><input id="ntdQuery" placeholder="Enter PIN Code or Office Name (e.g. 574)" onkeydown="if(event.key==='Enter')searchNtd()"><button class="ntdSearchBtn" onclick="searchNtd()">Search</button></div><div class="ntdHint">Enter 3 or more PIN digits (e.g. 574) or an office name.</div></section>
+<section class="ntdPanel"><h3>Speed Post Hub</h3><div class="ntdGrid"><div class="ntdCard nsh"><b>NSH</b><div id="ntdNSH">—</div></div><div class="ntdArrow">NSH<br>→ ICH</div><div class="ntdCard ich"><b>ICH</b><div id="ntdICH">—</div><small>Air Code: <span id="ntdAir1">—</span></small></div></div>
+<h3>Parcel Hub</h3><div class="ntdGrid"><div class="ntdCard l1"><b>L1 PH</b><div id="ntdL1PH">—</div><small>Parcel Air Code: <span id="ntdAir2">—</span></small></div><div class="ntdArrow">L1 PH<br>→ L2 PH</div><div class="ntdCard l2"><b>L2 PH</b><div id="ntdL2PH">—</div><small>Hub: <span id="ntdL2Hub">—</span></small></div></div>
+<h3>Letter Mail</h3><div class="ntdGrid"><div class="ntdCard rms1"><b>RMS L1</b><div id="ntdRMSL1">—</div></div><div class="ntdArrow">L1<br>→ L2</div><div class="ntdCard rms2"><b>RMS L2</b><div id="ntdRMSL2">—</div></div></div>
+<div id="ntdOfficeInfo" class="ntdOfficeInfo"></div><div id="ntdStatus" class="ntdStatus"></div><div id="ntdMatches" class="ntdMatches"></div><div id="ntdResults" class="ntdResultsWrap hidden"></div></section>
+<footer class="ntdFooter">MAILS SORTING • All India PIN &amp; Hub Mapping<br>Data source: Google Sheets</footer>
+</main>
+<main id="deliveryTab" class="tabPage hidden"><section class="panel"><div class="toolbar">
+<button class="primary" onclick="newRecord()">+ ಹೊಸ Delivery Place</button><button class="secondary" onclick="loadAll()">↻ Refresh</button>
+<div class="search"><input id="searchBox" placeholder="Search PIN Code / Office / Village / Beat…" oninput="searchChanged()"></div>
+</div><div id="status" class="status">Public test mode: Google Login ಇಲ್ಲದೆ Add / Edit ಮಾಡಬಹುದು.</div></section>
+<section id="formPanel" class="panel hidden">
+<h2 id="formTitle" style="font-size:18px;margin-top:0">ಹೊಸ Delivery Place</h2>
+<form id="recordForm" onsubmit="submitForm(event)">
+<div class="formgrid">
+<div class="field"><label for="officeSelect">Office ಆಯ್ಕೆಮಾಡಿ *</label><select id="officeSelect" required onchange="officeChanged()"><option value="">Office ಆಯ್ಕೆಮಾಡಿ…</option></select></div>
+<div class="field"><label for="pincode">Pincode</label><input id="pincode" readonly></div>
+<div class="field"><label for="officeName">Office Name</label><input id="officeName" readonly></div>
+<div class="field"><label for="officeType">Office Type</label><input id="officeType" readonly></div>
+<div class="field"><label for="locatedVillage">Located Village</label><input id="locatedVillage" placeholder="ಗ್ರಾಮದ ಹೆಸರು"></div>
+<div class="field wide"><label for="deliveryPlaces">Delivery Places *</label><input id="deliveryPlaces" required placeholder="Pre University College"><div class="hint">ಒಂದೇ ಹೆಸರನ್ನು ಬೇರೆ Office, Pincode ಅಥವಾ Beat‌ನಲ್ಲಿ ಸೇರಿಸಬಹುದು.</div></div>
+<div class="field"><label for="deliveryBeat">Delivery Beat</label><input id="deliveryBeat" placeholder="Beat 1 / NA (optional)"></div>
+<div class="field wide"><label for="remarks">Remarks</label><textarea id="remarks" rows="2" placeholder="ಹೆಚ್ಚುವರಿ ಮಾಹಿತಿ"></textarea></div>
+</div>
+<div class="toolbar" style="margin-top:15px"><button id="saveBtn" class="primary" type="submit">Save</button><button class="secondary" type="button" onclick="closeForm()">ರದ್ದುಮಾಡಿ</button></div>
+<div id="formStatus" class="status"></div>
+</form></section>
+<section class="panel"><h2 style="font-size:18px;margin:0 0 10px">TD Villages Sorting List</h2><div id="count" class="count">Loading records…</div>
+<div class="tablewrap"><table><thead><tr><th>Pincode</th><th>Office Name</th><th>Office Type</th><th>Located Village</th><th>Delivery Places</th><th>Delivery Beat</th><th>Remarks</th><th>Action</th></tr></thead><tbody id="recordsBody"><tr><td colspan="8">ಲೋಡ್ ಆಗುತ್ತಿದೆ…</td></tr></tbody></table></div></section></main>
+<script>
+// Supabase configuration: use the project's publishable key only.
+const SUPABASE_URL = "https://ikrgycccphsbluzjwtef.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_7Xqto8X2iejB1VaAPO6hlg_MfcpcysH";
+let sb = null, records = [], offices = [], editingId = null, currentRole = 'public', currentUser = null;
+const TD_OFFICE_ALLOWLIST = new Set([
+  "574101|ajekar s.o",
+  "574101|andar b.o",
+  "574101|hadiangady b.o",
+  "574101|hermunde b.o",
+  "574101|jarkala b.o",
+  "574101|yennehole b.o",
+  "574102|bailur s.o",
+  "574102|gundyadka b.o",
+  "574102|kanajar b.o",
+  "574102|nire b.o",
+  "574102|yerlapady b.o",
+  "574103|hejmadi s.o",
+  "574103|avral b.o",
+  "574103|hejmadikodi b.o",
+  "574104|karkala bazar s.o",
+  "574104|karkala west s.o",
+  "574104|karkala h.o",
+  "574104|hiriangady b.o",
+  "574105|katapadi(udupi) s.o",
+  "574105|kunjarugiri b.o",
+  "574105|manipura west b.o",
+  "574105|mattu b.o",
+  "574105|subhash nagar b.o",
+  "574106|kaup s.o",
+  "574106|kalathur south b.o",
+  "574106|majur b.o",
+  "574106|mallar b.o",
+  "574106|padur b.o",
+  "574106|uliyaragoli b.o",
+  "574107|miyar s.o",
+  "574107|borkatte b.o",
+  "574107|hosmar b.o",
+  "574107|nellikar b.o",
+  "574107|nooralbettu b.o",
+  "574108|muniyal s.o",
+  "574108|ellare b.o",
+  "574108|kadthala b.o",
+  "574108|kukkuje b.o",
+  "574108|varanga b.o",
+  "574108|vishwasnagar b.o",
+  "574109|naravi s.o",
+  "574109|idu b.o",
+  "574109|kutlur b.o",
+  "574109|sulkeri b.o",
+  "574110|nitte s.o",
+  "574110|bola b.o",
+  "574110|doopadakatte b.o",
+  "574110|kallya b.o",
+  "574110|kedinje b.o",
+  "574110|parappadi b.o",
+  "574111|padubidri s.o",
+  "574111|nandikur b.o",
+  "574111|padebettu b.o",
+  "574111|santhur b.o",
+  "574112|palimar s.o",
+  "574113|pilar s.o (udupi)",
+  "574113|halasinakatte b.o",
+  "574113|yellur b.o",
+  "574114|sanur s.o",
+  "574114|irvathur b.o",
+  "574114|renjala b.o",
+  "574115|shankarapura s.o",
+  "574115|bhantakal b.o",
+  "574115|herur-92 b.o",
+  "574116|shirva s.o",
+  "574116|kodupanjimar b.o",
+  "574116|kuthyar b.o",
+  "574116|mattar b.o",
+  "574116|padubelle b.o",
+  "574116|pernal b.o",
+  "574116|sooda b.o",
+  "574117|uchila s.o",
+  "574117|bada b.o",
+  "574117|belapu b.o",
+  "574117|paniyur b.o",
+  "574118|udyavara s.o",
+  "574118|alevoor b.o",
+  "574118|korangrapadi b.o",
+  "574118|kuthpadi b.o",
+  "574118|pithrodi b.o",
+  "574119|yermal s.o",
+  "574119|admar b.o",
+  "574119|kemmundel b.o",
+  "574119|paduyermal b.o",
+  "574122|bajegoli s.o",
+  "574122|kervashe b.o",
+  "574122|mala b.o",
+  "574122|manjalthar b.o",
+  "574122|nallur b.o",
+  "574129|kanthavara s.o",
+  "574129|belady b.o",
+  "574129|vanjarakatte b.o",
+  "574141|aikala s.o",
+  "574141|elinje b.o",
+  "574141|kollur b.o",
+  "574142|bajpe airport s.o",
+  "574142|bajpe s.o",
+  "574142|adyapady b.o",
+  "574142|kalavara b.o",
+  "574142|kenjar b.o",
+  "574142|kolambe b.o",
+  "574142|paduperar b.o",
+  "574142|pejavara b.o",
+  "574143|farangipet s.o",
+  "574143|kodmannu b.o",
+  "574143|mermajal b.o",
+  "574143|pudu b.o",
+  "574143|thumbe b.o",
+  "574143|valachil b.o",
+  "574144|ganjimat s.o",
+  "574144|kompadavu b.o",
+  "574144|mogaru b.o",
+  "574144|muchur b.o",
+  "574144|neerude b.o",
+  "574144|sibrikere b.o",
+  "574145|gurpur s.o",
+  "574145|addoor b.o",
+  "574145|ulaibettu b.o",
+  "574146|haleangady s.o",
+  "574146|chelairu b.o",
+  "574146|kemral panchayat b.o",
+  "574146|koikude b.o",
+  "574146|mukka b.o",
+  "574146|padupanambur b.o",
+  "574146|sasihithlu b.o",
+  "574146|thokur b.o",
+  "574148|kateel s.o",
+  "574150|kinnigoli s.o",
+  "574150|elathur b.o",
+  "574150|nadugodu b.o",
+  "574150|punaroor b.o",
+  "574151|kinnikambla s.o",
+  "574151|kandavara b.o",
+  "574151|malalipanchayath b.o",
+  "574151|muduperar b.o",
+  "574153|kurnad s.o",
+  "574153|balepuni b.o",
+  "574153|boliyar b.o",
+  "574153|chelur b.o",
+  "574153|kairangala b.o",
+  "574153|montepadavu b.o",
+  "574154|karnad s.o",
+  "574154|mulki bazar s.o",
+  "574154|mulki s.o",
+  "574154|athikaribettu b.o",
+  "574154|balkunje b.o",
+  "574154|chitrapu b.o",
+  "574154|kakva b.o",
+  "574154|karnire b.o",
+  "574154|kavathar b.o",
+  "574154|kenchanakere b.o",
+  "574154|mulki east b.o",
+  "574154|panjinadka b.o",
+  "574154|sadashivanagar b.o",
+  "574154|shimanthoor b.o",
+  "574162|iruvail b.o",
+  "574162|kolavoor b.o",
+  "574162|kuppepadavu s.o",
+  "574197|kodangallu s.o",
+  "574197|kallabettu b.o",
+  "574197|maroor b.o",
+  "574197|peranja b.o",
+  "574197|taccode b.o",
+  "574198|kokkada s.o",
+  "574198|arasinamakki b.o",
+  "574198|petrame b.o",
+  "574198|shibaje b.o",
+  "574198|shishila b.o",
+  "574199|mangalagangothri s.o",
+  "574199|assaigoli b.o",
+  "574199|harekala b.o",
+  "574199|konaje b.o",
+  "574199|pace campus b.o",
+  "574199|pavur b.o",
+  "574199|phajiru b.o",
+  "574201|court hill(puttur) s.o",
+  "574201|puttur(d.k.) h.o",
+  "574201|bolwar b.o",
+  "574202|darbe(puttur) s.o",
+  "574202|kaimana b.o",
+  "574202|kemminje b.o",
+  "574202|kudmar b.o",
+  "574202|mottethadka b.o",
+  "574202|mundur b.o",
+  "574202|narimogru b.o",
+  "574202|punchappady b.o",
+  "574202|sarve b.o",
+  "574202|savanur(puttur) b.o",
+  "574202|shanthigodu b.o",
+  "574203|nehrunagar(puttur dk) s.o",
+  "574203|bannur b.o",
+  "574203|chickmudnoor b.o",
+  "574203|ujirpade b.o",
+  "574210|aryapu s.o",
+  "574210|darbethadka b.o",
+  "574210|kaikara b.o",
+  "574210|kedambady b.o",
+  "574210|kumbra b.o",
+  "574210|kuriya b.o",
+  "574210|madav b.o",
+  "574210|palthady b.o",
+  "574211|bantval s.o",
+  "574211|agrar b.o",
+  "574211|ajilamogru b.o",
+  "574211|allipade b.o",
+  "574211|amtady b.o",
+  "574211|arla b.o",
+  "574211|jakribettu b.o",
+  "574211|koila b.o",
+  "574211|kuriyala b.o",
+  "574211|loretto b.o",
+  "574211|navoor(bantval) b.o",
+  "574211|panjikal b.o",
+  "574211|rayee b.o",
+  "574211|sarapady b.o",
+  "574211|sornad b.o",
+  "574212|bellare s.o",
+  "574212|balila b.o",
+  "574212|chokkadi b.o",
+  "574212|kalanja b.o",
+  "574212|kalmadka b.o",
+  "574212|kodiyala b.o",
+  "574212|kukkujadka b.o",
+  "574212|manikar b.o",
+  "574212|mupperia b.o",
+  "574212|perlampady b.o",
+  "574212|peruvaje b.o",
+  "574213|belvai s.o",
+  "574213|daregudde b.o",
+  "574213|moodumarnad b.o",
+  "574213|padumarnad b.o",
+  "574214|belthangady s.o",
+  "574214|bangady b.o",
+  "574214|killur b.o",
+  "574214|koyyur b.o",
+  "574214|laila b.o",
+  "574214|malavanthige b.o",
+  "574214|melanthabettu b.o",
+  "574214|navoor(belt) b.o",
+  "574214|permanu b.o",
+  "574214|savanal b.o",
+  "574216|dharmasthala s.o",
+  "574216|kayarthadka b.o",
+  "574216|nidle b.o",
+  "574216|puduvettu b.o",
+  "574216|samedakalapu b.o",
+  "574217|guruvayanakere s.o",
+  "574217|aldangady b.o",
+  "574217|balanja b.o",
+  "574217|gardady b.o",
+  "574217|gerukatte b.o",
+  "574217|kaniyur(beltangady) b.o",
+  "574217|nala b.o",
+  "574217|padangady b.o",
+  "574217|pilya b.o",
+  "574217|sirlalu b.o",
+  "574217|tenkakarandur b.o",
+  "574217|vodilnala b.o",
+  "574218|guthigar s.o",
+  "574218|balugodu b.o",
+  "574218|devachalla b.o",
+  "574218|hariharapallathadka b.o",
+  "574218|kalmakar b.o",
+  "574218|kamila b.o",
+  "574218|kollamogru b.o",
+  "574218|madappady b.o",
+  "574218|nadugallu b.o",
+  "574219|jodumarga s.o",
+  "574219|ammunje b.o",
+  "574219|badagabellur b.o",
+  "574219|belloor b.o",
+  "574219|benjanapadavu b.o",
+  "574219|kallige b.o",
+  "574219|modankap b.o",
+  "574219|polali b.o",
+  "574220|kabaka s.o",
+  "574220|idkidu b.o",
+  "574220|kedila b.o",
+  "574220|kudippady b.o",
+  "574220|padnur b.o",
+  "574221|kadaba s.o (dakshina kannada)",
+  "574221|ballya b.o",
+  "574221|kodimbala b.o",
+  "574221|kutrupady b.o",
+  "574221|noojibalthila b.o",
+  "574221|renjilady b.o",
+  "574221|yedamangala b.o",
+  "574222|kalladka s.o",
+  "574222|bolanthuru b.o",
+  "574222|karingana b.o",
+  "574222|kodapadavu b.o",
+  "574222|veerakamba b.o",
+  "574223|kav s.o",
+  "574223|ariadka b.o",
+  "574223|badagannur b.o",
+  "574223|kanakamajal b.o",
+  "574223|pernaje b.o",
+  "574224|madanthyar s.o",
+  "574224|kuvettu b.o",
+  "574224|machina b.o",
+  "574224|malady b.o",
+  "574224|panakaje b.o",
+  "574225|mijar s.o",
+  "574226|mithabail s.o",
+  "574226|kadandale b.o",
+  "574226|paladka b.o",
+  "574227|moodbidri s.o",
+  "574227|vidyagiri (moodbidri) s.o",
+  "574227|alangar b.o",
+  "574227|ashwathapura b.o",
+  "574227|hosabettu b.o",
+  "574227|sampige b.o",
+  "574227|thodar b.o",
+  "574228|mundaje s.o",
+  "574228|charmadi b.o",
+  "574228|gandibagilu b.o",
+  "574228|kadirudyavara b.o",
+  "574228|kakkinje b.o",
+  "574228|kalmanja b.o",
+  "574228|neria b.o",
+  "574228|thotathady b.o",
+  "574229|nellyadi s.o",
+  "574229|golithattu b.o",
+  "574229|gundia b.o",
+  "574229|ichilampady b.o",
+  "574229|konalu b.o",
+  "574229|rekya b.o",
+  "574229|shirady b.o",
+  "574230|nettana s.o",
+  "574230|kaddya b.o",
+  "574230|kombar b.o",
+  "574230|mardala b.o",
+  "574230|sunkadakatte b.o",
+  "574231|panemangalore s.o",
+  "574231|narikombu b.o",
+  "574231|sajipamudu b.o",
+  "574231|sajipamunnur b.o",
+  "574231|sajipanadu b.o",
+  "574231|sajipapadu b.o",
+  "574231|shamboor b.o",
+  "574232|panja s.o",
+  "574232|balpa b.o",
+  "574232|karikala b.o",
+  "574232|kenya b.o",
+  "574232|kuthkunja b.o",
+  "574232|pambethady b.o",
+  "574233|punjalkatte s.o",
+  "574233|badagakajekar b.o",
+  "574233|nainad b.o",
+  "574233|tenkakajekar b.o",
+  "574234|sampaje s.o",
+  "574234|balambi(chembu) b.o",
+  "574234|goonadka b.o",
+  "574234|sampaje gate b.o",
+  "574235|sathya sai vihar s.o",
+  "574235|alike b.o",
+  "574236|shirthady s.o",
+  "574236|kashipatna b.o",
+  "574236|mantrady b.o",
+  "574236|marody b.o",
+  "574236|padukonaje b.o",
+  "574236|perady b.o",
+  "574236|valpady b.o",
+  "574237|siddakatte s.o",
+  "574237|arambody b.o",
+  "574237|karpe b.o",
+  "574237|puchamogru b.o",
+  "574238|subramanya s.o",
+  "574238|bilinele b.o",
+  "574238|devarahalli b.o",
+  "574238|yenekal b.o",
+  "574239|sullia s.o",
+  "574239|aivernad b.o",
+  "574239|ajjavara b.o",
+  "574239|aletty b.o",
+  "574239|duggaladka b.o",
+  "574239|jalsur b.o",
+  "574239|kolchar b.o",
+  "574239|mandekole b.o",
+  "574239|peral b.o",
+  "574239|sonangeri b.o",
+  "574239|sullia gandhinagar b.o",
+  "574240|s.d.m.c.ujire s.o",
+  "574240|ujire s.o",
+  "574240|belal b.o",
+  "574240|kanyadi b.o",
+  "574240|old town ujire b.o",
+  "574241|uppinangady s.o",
+  "574241|bajathur b.o",
+  "574241|haleneranky b.o",
+  "574241|hirebandady b.o",
+  "574241|ilanthila b.o",
+  "574241|koila cattle farm(k.c. farm) b.o",
+  "574241|mogru b.o",
+  "574241|ramakunja b.o",
+  "574241|thekkar b.o",
+  "574241|volalu b.o",
+  "574242|venur s.o",
+  "574242|andinje b.o",
+  "574242|bajre b.o",
+  "574242|karimanel b.o",
+  "574242|kokrady b.o",
+  "574242|kukkedy b.o",
+  "574242|mudukodi b.o",
+  "574242|nittade b.o",
+  "574242|savya b.o",
+  "574243|vittal s.o",
+  "574243|biliyoorkatte b.o",
+  "574243|kodangai b.o",
+  "574243|kula b.o",
+  "574243|mangalapadavu b.o",
+  "574243|murva b.o",
+  "574243|nayarmoole b.o",
+  "574243|neerkaje b.o",
+  "574243|odiyoor b.o",
+  "574243|puncha b.o",
+  "574243|vittal mudnur b.o",
+  "574244|palli s.o",
+  "574244|kuntady b.o",
+  "574244|ninjoor b.o",
+  "574248|doddathota s.o",
+  "574248|bollaje b.o",
+  "574248|markanja b.o",
+  "574248|nellur kemraje b.o",
+  "574248|pailar b.o",
+  "574248|ubbaradka mithur b.o",
+  "574253|mani s.o",
+  "574253|anathady b.o",
+  "574253|balthila b.o",
+  "574253|borimar b.o",
+  "574253|budoli b.o",
+  "574253|kagekana b.o",
+  "574253|neralakatte b.o",
+  "574259|panaje s.o",
+  "574259|bettampady b.o",
+  "574259|irde b.o",
+  "574259|nidpalli b.o",
+  "574260|adyanadka s.o",
+  "574260|moodambail b.o",
+  "574260|peruvai b.o",
+  "574265|vogga s.o",
+  "574265|kadabettu b.o",
+  "574265|karinje b.o",
+  "574265|kavalkatte b.o",
+  "574265|maninalkur b.o",
+  "574265|mudupadukodi b.o",
+  "574267|badagayedapadavu s.o",
+  "574274|kallamundkur s.o",
+  "574274|banangady b.o",
+  "574274|kudripadavu b.o",
+  "574274|niddodi b.o",
+  "574279|kanyana s.o",
+  "574279|karopady b.o",
+  "574279|kudupallathadka b.o",
+  "574285|alankar s.o",
+  "574285|perabe b.o",
+  "574285|sharavoor b.o",
+  "574313|ishwaramangala s.o",
+  "574313|karnoor b.o",
+  "574313|soole padavu b.o",
+  "574314|aranthodu s.o",
+  "574314|aramboor b.o",
+  "574314|peraje b.o",
+  "574314|thodikana b.o",
+  "574323|manchi s.o",
+  "574323|barebettu b.o",
+  "574323|ira b.o",
+  "574323|kolnadu b.o",
+  "574323|kulalu b.o",
+  "574323|salethur b.o",
+  "574324|vamadapadavu s.o",
+  "574324|ajjibettu b.o",
+  "574324|dandegoli b.o",
+  "574324|kudambettu b.o",
+  "574324|mavinakatte b.o",
+  "574325|nekkilady(34) s.o",
+  "574325|biliyoor b.o",
+  "574325|kadeshwalya b.o",
+  "574325|kodimbady b.o",
+  "574325|peramogru b.o",
+  "574325|perne b.o",
+  "574326|kalleri s.o",
+  "574326|bandar b.o",
+  "574326|barya b.o",
+  "574326|karaya b.o",
+  "574326|puthila b.o",
+  "574326|tannirpantha b.o",
+  "574326|uli b.o",
+  "574326|uruvalu b.o",
+  "574327|kurunjibag s.o",
+  "574328|kaniyur(puttur) s.o",
+  "574328|bobbekri b.o",
+  "574328|charvaka b.o",
+  "574328|dolpady b.o",
+  "574328|murulya b.o",
+  "574328|yenmur b.o",
+  "574509|permude s.o",
+  "574509|yekkar b.o",
+  "575001|falnir s.o",
+  "575001|hampankatta s.o",
+  "575001|leewell s.o",
+  "575001|mangalore collectorate s.o",
+  "575001|mangalore h.o",
+  "575002|balmatta s.o",
+  "575002|fisheries college s.o",
+  "575002|kankanady s.o",
+  "575002|mercara hill s.o",
+  "575003|boloor s.o",
+  "575003|district courts s.o (dakshina kannada)",
+  "575003|gandhinagar s.o (dakshina kannada)",
+  "575003|kodiyalbail s.o",
+  "575004|bijai s.o",
+  "575005|kulshekar h.o",
+  "575006|ashoknagar(mr) s.o",
+  "575007|padil s.o",
+  "575007|adyar b.o",
+  "575007|kannur b.o",
+  "575007|nagori b.o",
+  "575008|konchady s.o",
+  "575008|bikkarnakatte b.o",
+  "575008|bondel b.o",
+  "575009|bajal s.o",
+  "575009|jeppinamogaru b.o",
+  "575010|panambur s.o",
+  "575010|meenakaliya b.o",
+  "575011|baikampady s.o",
+  "575011|jokatte b.o",
+  "575013|kulur s.o",
+  "575013|panjimogaru b.o",
+  "575013|sandspit b.o",
+  "575014|surathkal s.o",
+  "575014|krishnapura b.o",
+  "575015|kavur s.o",
+  "575015|kunjathbail b.o",
+  "575016|shakthinagar (dakshina kannada) s.o",
+  "575017|permannur s.o",
+  "575017|amblamogaru b.o",
+  "575017|munnur b.o",
+  "575018|derlakatte s.o",
+  "575018|mangalanthi b.o",
+  "575018|naringana b.o",
+  "575019|kulai s.o",
+  "575019|msez colony b.o",
+  "575020|ullal s.o",
+  "575022|kotekar s.o",
+  "575022|kumpala b.o",
+  "575023|someshwar uchil s.o",
+  "575023|kinya b.o",
+  "575023|talapady b.o",
+  "575025|srinivasnagar s.o",
+  "575028|vamanjoor s.o",
+  "575028|kudupu b.o",
+  "575028|moodushedde b.o",
+  "575029|pedamale s.o",
+  "575029|bondanthila b.o",
+  "575029|mallur b.o",
+  "575029|neermarga b.o",
+  "575029|padu b.o",
+  "575030|katipalla s.o",
+  "575030|bala b.o",
+  "575030|delanthabettu b.o",
+  "575030|kuthethur b.o",
+  "575030|kuthethur bajav b.o",
+  "575030|madhya b.o",
+  "575030|surinje b.o",
+  "576101|bannanje s.o",
+  "576101|mission compound s.o",
+  "576101|udupi courts s.o",
+  "576101|udupi h.o",
+  "576101|adi-udupi b.o",
+  "576101|chitpadi b.o",
+  "576101|kukkikatte b.o",
+  "576102|kunjibettu s.o",
+  "576102|doddanagudde b.o",
+  "576102|manchikodi b.o",
+  "576102|shivalli b.o",
+  "576103|ambalapadi s.o",
+  "576103|kadekar b.o",
+  "576103|kidiyur b.o",
+  "576103|nittur b.o",
+  "576104|dist. offices complex manipal s.o",
+  "576104|manipal east s.o",
+  "576104|manipal industrial area s.o",
+  "576104|manipal h.o",
+  "576105|santhekatte s.o",
+  "576105|kelarkalabettu b.o",
+  "576105|kolalagiri b.o",
+  "576105|puttur b.o",
+  "576105|tenkabettu b.o",
+  "576105|uppur b.o",
+  "576106|krodashrama s.o",
+  "576106|tenkanidiyur b.o",
+  "576107|parkala s.o",
+  "576107|athradi b.o",
+  "576107|badagabettu b.o",
+  "576107|bhairanje b.o",
+  "576107|herga b.o",
+  "576107|hirebettu b.o",
+  "576107|patla b.o",
+  "576108|malpe s.o",
+  "576108|kudrukere b.o",
+  "576108|thottam b.o",
+  "576111|belmannu s.o",
+  "576111|nandalike b.o",
+  "576112|hebri s.o",
+  "576112|belanje b.o",
+  "576112|chara b.o",
+  "576112|kabbinale b.o",
+  "576112|kuchur b.o",
+  "576112|mudradi b.o",
+  "576112|shivapura b.o",
+  "576112|sitanadi b.o",
+  "576112|someshwara b.o",
+  "576113|hiriadka s.o",
+  "576113|bellarpadi b.o",
+  "576113|guddeangadi b.o",
+  "576113|kudi b.o",
+  "576113|panchanbettu b.o",
+  "576113|pernankila b.o",
+  "576114|kallianapura s.o",
+  "576115|kemmannu s.o",
+  "576115|badanidiyur b.o",
+  "576115|hoode b.o",
+  "576117|kukkundur s.o",
+  "576117|attur b.o",
+  "576117|durga b.o",
+  "576117|hirgana b.o",
+  "576117|kukkundur west b.o",
+  "576117|nakre b.o",
+  "576117|tellar b.o",
+  "576120|moodubelle s.o",
+  "576120|kattingere b.o",
+  "576120|manipura b.o",
+  "576120|marne b.o",
+  "576121|mundkur s.o",
+  "576121|bolakodi b.o",
+  "576121|inna b.o",
+  "576121|sacherigudde b.o",
+  "576122|pangala s.o",
+  "576122|innanje b.o",
+  "576124|perdur s.o",
+  "576124|arekandige b.o",
+  "576124|bellampalli b.o",
+  "576124|havanje b.o",
+  "576124|kukkehalli b.o",
+  "576124|shiroor b.o",
+  "576201|gandhi-maidan s.o",
+  "576201|kundapura market s.o",
+  "576201|kundapura h.o",
+  "576210|barkur s.o",
+  "576210|barkur town b.o",
+  "576210|bennekudru b.o",
+  "576210|halladi-harkadi b.o",
+  "576210|hanehalli b.o",
+  "576210|heskethur b.o",
+  "576210|hosala b.o",
+  "576210|kavadi b.o",
+  "576210|saibarkatte b.o",
+  "576210|shiriyara b.o",
+  "576210|yedthadi b.o",
+  "576211|basrur s.o",
+  "576211|ampar b.o",
+  "576211|anagalli b.o",
+  "576211|balkur b.o",
+  "576211|halnadu b.o",
+  "576211|japthi b.o",
+  "576211|kandlur b.o",
+  "576211|kavradi b.o",
+  "576212|belve s.o",
+  "576212|ardi b.o",
+  "576212|gummahola b.o",
+  "576212|hengavalli b.o",
+  "576212|hiliyana b.o",
+  "576212|madamakki b.o",
+  "576212|shedimane b.o",
+  "576213|brahmavara s.o",
+  "576213|aroor b.o",
+  "576213|baikadi b.o",
+  "576213|chanthar b.o",
+  "576213|haradi b.o",
+  "576213|herur b.o",
+  "576213|kumragodu b.o",
+  "576213|kunjal b.o",
+  "576213|matapadi b.o",
+  "576213|neelavara b.o",
+  "576213|salikeri b.o",
+  "576214|byndoor s.o",
+  "576214|golihole b.o",
+  "576214|mayyadi b.o",
+  "576214|paduvari b.o",
+  "576214|taggarshe b.o",
+  "576214|yedthare b.o",
+  "576214|yelajith b.o",
+  "576215|cherkadi s.o",
+  "576215|haluvalli b.o",
+  "576215|karje b.o",
+  "576215|santhekatte-kalathur b.o",
+  "576216|ganguli s.o",
+  "576217|hanglur s.o",
+  "576217|kodi b.o",
+  "576217|koni b.o",
+  "576217|mudlakatte b.o",
+  "576218|hungarcutta s.o",
+  "576218|kodibengre b.o",
+  "576219|khambadakone s.o",
+  "576219|heranjal b.o",
+  "576219|kalthod b.o",
+  "576219|kergal b.o",
+  "576219|kirimanjeshwara b.o",
+  "576219|koderi b.o",
+  "576219|moodumata b.o",
+  "576220|kollur s.o",
+  "576221|kota s.o",
+  "576221|belur devasthanabettu b.o",
+  "576221|kotathattu b.o",
+  "576221|manur b.o",
+  "576222|koteshwara s.o",
+  "576222|asodu b.o",
+  "576222|beejadi b.o",
+  "576222|haladi-28 b.o",
+  "576222|haladi-76 b.o",
+  "576222|hardalli-mandalli b.o",
+  "576222|hunsemakki b.o",
+  "576222|kakkunje b.o",
+  "576222|molahalli b.o",
+  "576222|salvadi b.o",
+  "576222|souda b.o",
+  "576222|yadyadi-mathyadi b.o",
+  "576223|mandarthi s.o",
+  "576223|avarse b.o",
+  "576223|janvarkatte b.o",
+  "576223|muddumane b.o",
+  "576223|nadur b.o",
+  "576223|vandar b.o",
+  "576224|navunda s.o",
+  "576224|badakere b.o",
+  "576224|maravanthe b.o",
+  "576224|ragihaklu b.o",
+  "576225|saligrama s.o (udupi)",
+  "576225|achladi b.o",
+  "576225|bannadi b.o",
+  "576225|karkada b.o",
+  "576225|parampalli b.o",
+  "576226|sasthan s.o",
+  "576226|airody b.o",
+  "576226|kodi kanyana b.o",
+  "576226|yedabettu b.o",
+  "576227|shankaranarayana s.o",
+  "576227|amasebail b.o",
+  "576227|krodabailur b.o",
+  "576227|kulanje b.o",
+  "576227|machattu b.o",
+  "576227|rattadi b.o",
+  "576228|shiruru (udupi) s.o",
+  "576229|siddapura (udupi) s.o",
+  "576229|hallihole b.o",
+  "576229|jansale b.o",
+  "576229|kamalashile b.o",
+  "576229|ullur b.o",
+  "576230|tallur s.o (udupi)",
+  "576230|devalkunda b.o",
+  "576230|hemmadi b.o",
+  "576230|herikudru b.o",
+  "576230|kanyana b.o",
+  "576230|kattebelthur b.o",
+  "576230|nada b.o",
+  "576230|uppinakudru b.o",
+  "576231|tekkatte s.o",
+  "576231|kedur b.o",
+  "576231|korgi b.o",
+  "576231|ultoor b.o",
+  "576232|uppunda s.o",
+  "576232|bijur b.o",
+  "576232|tarapathi b.o",
+  "576233|vandse s.o",
+  "576233|alur b.o",
+  "576233|chittoor b.o",
+  "576233|harkur b.o",
+  "576233|idurkunhady b.o",
+  "576233|jadkal b.o",
+  "576233|keradi b.o",
+  "576233|melhosur b.o",
+  "576233|mudmunda b.o",
+  "576233|mudur b.o",
+  "576233|nujadi b.o",
+  "576234|kokkarne s.o",
+  "576234|baidabettu b.o",
+  "576234|kadur b.o",
+  "576234|kenjur b.o",
+  "576234|nalkur b.o",
+  "576234|nanchar b.o",
+  "576235|trasi s.o",
+  "576235|hadavu b.o",
+  "576235|hakladi b.o",
+  "576235|kundabarandadi b.o",
+  "576235|shenapura b.o",
+  "576247|gujjadi s.o",
+  "576247|hosadu b.o",
+  "576257|kumbhashi s.o",
+  "576257|vakwadi b.o",
+  "576282|hosangadi s.o",
+  "576282|yedamoge b.o",
+  "576283|hattiangadi s.o",
+  "576283|ajrihara b.o",
+  "576283|gulvadi b.o",
+  "576283|karkunje b.o",
+  "576283|kenchanur b.o",
+  "576283|kodladi b.o"
+]);
+function normalizeOfficeName(name){
+ return String(name||'').toLocaleLowerCase()
+   .replace(/\b(sub office|branch office|head office)\b/g,'')
+   .replace(/[^a-z0-9]/g,'');
+}
+function tdOfficeKey(pin,name){return String(pin||'').trim()+'|'+normalizeOfficeName(name);}
+function officeTypeFromName(name){
+ const n=String(name||'').toLocaleLowerCase().trim();
+ if(/(?:^|\s)h\.o\.?$/.test(n)) return 'Head Office';
+ if(/(?:^|\s)s\.o\.?$/.test(n)) return 'Sub Office';
+ if(/(?:^|\s)b\.o\.?$/.test(n)) return 'Branch Office';
+ return '';
+}
+function titleOfficeName(name){
+ return String(name||'').trim().split(/\s+/).map(w=>{
+   if(/^s\.o\.?$/i.test(w)) return 'S.O';
+   if(/^b\.o\.?$/i.test(w)) return 'B.O';
+   if(/^h\.o\.?$/i.test(w)) return 'H.O';
+   return w.charAt(0).toLocaleUpperCase()+w.slice(1);
+ }).join(' ');
+}
+function configured(){ return SUPABASE_PUBLISHABLE_KEY && !SUPABASE_PUBLISHABLE_KEY.includes('PASTE_YOUR'); }
+function initSupabase(){
+  if(!window.supabase){alert('Supabase library load ಆಗಿಲ್ಲ. Internet connection ಪರಿಶೀಲಿಸಿ.');return false;}
+  if(!configured()){alert('HTMLನಲ್ಲಿ ನಿಮ್ಮ Supabase Publishable Key ಸೇರಿಸಿ. Secret/service_role key ಬಳಸಬೇಡಿ.');return false;}
+  sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}); return true;
+}
+function switchTab(which){
+ document.getElementById('ntdTab').classList.toggle('hidden',which!=='ntd');
+ document.getElementById('deliveryTab').classList.toggle('hidden',which!=='delivery');
+ document.getElementById('tabNtdBtn').classList.toggle('active',which==='ntd');
+ document.getElementById('tabDeliveryBtn').classList.toggle('active',which==='delivery');
+ if(which==='delivery') loadDeliveryTab();
+}
+function setNtdText(id,value){document.getElementById(id).textContent=(value==null||String(value).trim()==='')?'—':String(value)}
+function showNtdRecord(r){
+ setNtdText('ntdNSH',r.nsh);setNtdText('ntdICH',r.ich);setNtdText('ntdAir1',r.air_code1);
+ setNtdText('ntdL1PH',r.l1ph);setNtdText('ntdL2PH',r.l2ph);setNtdText('ntdAir2',r.air_code2);
+ setNtdText('ntdL2Hub',r.l2ph);setNtdText('ntdRMSL1',r.rms_l1);setNtdText('ntdRMSL2',r.rms_l2);
+ document.getElementById('ntdOfficeInfo').textContent=[r.pincode,r.office_name,r.office_type,r.circle].filter(Boolean).join(' • ');
+}
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function searchNtd(){
+ const q=document.getElementById('ntdQuery').value.trim(), st=document.getElementById('ntdStatus'), matches=document.getElementById('ntdMatches'), results=document.getElementById('ntdResults');
+ matches.innerHTML='';results.innerHTML='';results.classList.add('hidden');
+ if(q.length<3){st.textContent='ಕನಿಷ್ಠ 3 ಅಂಕೆಗಳು ಅಥವಾ ಅಕ್ಷರಗಳನ್ನು ನಮೂದಿಸಿ.';st.className='ntdStatus err';return}
+ if(!sb){st.textContent='Supabase ಸಂಪರ್ಕ ಸಿದ್ಧವಾಗಿಲ್ಲ.';st.className='ntdStatus err';return}
+ st.textContent='ಹುಡುಕಲಾಗುತ್ತಿದೆ…';st.className='ntdStatus';
+ try{
+   let query=sb.from('ntd_master').select('id,pincode,office_name,office_type,circle,nsh,ich,air_code1,l1ph,l2ph,air_code2,rms_l1,rms_l2').order('office_name').limit(1000);
+   if(/^\d+$/.test(q)){
+     // A full six-digit PIN returns only that PIN. Shorter numeric queries return prefix matches.
+     query=q.length===6?query.eq('pincode',q):query.ilike('pincode',q+'%');
+   }else{
+     query=query.ilike('office_name','%'+q+'%');
+   }
+   const {data,error}=await query;
+   if(error) throw error;
+   const rows=data||[];
+   if(!rows.length){st.textContent='ಹೊಂದಾಣಿಕೆಯ ದಾಖಲೆ ಸಿಗಲಿಲ್ಲ.';st.className='ntdStatus err';['ntdNSH','ntdICH','ntdAir1','ntdL1PH','ntdL2PH','ntdAir2','ntdL2Hub','ntdRMSL1','ntdRMSL2','ntdOfficeInfo'].forEach(id=>setNtdText(id,''));return;}
+   window._ntdRows=rows;showNtdRecord(rows[0]);
+   st.textContent=rows.length+' Office ದಾಖಲೆಗಳು ಸಿಕ್ಕಿವೆ.';
+   results.classList.remove('hidden');
+   results.innerHTML='<table class="ntdResults"><thead><tr><th>Pincode</th><th>Office Name</th><th>Office Type</th><th>Circle</th></tr></thead><tbody>'+rows.map((r,i)=>`<tr onclick="chooseNtd(${i})"><td>${esc(r.pincode)}</td><td>${esc(r.office_name)}</td><td>${esc(r.office_type)}</td><td>${esc(r.circle||'')}</td></tr>`).join('')+'</tbody></table>';
+ }catch(e){st.textContent='ಹುಡುಕಾಟ ದೋಷ: '+(e.message||'Supabase request failed');st.className='ntdStatus err';}
+}
+function chooseNtd(i){const r=(window._ntdRows||[])[i];if(r){showNtdRecord(r);document.getElementById('ntdOfficeInfo').scrollIntoView({behavior:'smooth',block:'nearest'});}}
+
+function status(msg,type=''){const e=document.getElementById('status');e.textContent=msg;e.className='status '+type}
+function formStatus(msg,type=''){const e=document.getElementById('formStatus');e.textContent=msg;e.className='status '+type}
+function officeMatchesQuery(o,q){return !q||[o.pincode,o.officeName,o.officeType].some(v=>String(v||'').toLocaleLowerCase().includes(q));}
+function populateOffices(selectedKey=''){
+ const s=document.getElementById('officeSelect'), q=(document.getElementById('searchBox').value||'').trim().toLocaleLowerCase();
+ const matching=offices.map((o,i)=>({o,i})).filter(x=>officeMatchesQuery(x.o,q));
+ s.innerHTML='<option value="">'+(matching.length?'Office ಆಯ್ಕೆಮಾಡಿ… ('+matching.length+' ಹೊಂದಾಣಿಕೆ)':'ಈ Pincode/ಹುಡುಕಾಟಕ್ಕೆ Office ಸಿಗಲಿಲ್ಲ')+'</option>'+matching.map(x=>`<option value="${x.i}" ${x.o.officeKey===selectedKey?'selected':''}>${esc(x.o.pincode)} — ${esc(x.o.officeName)} (${esc(x.o.officeType)})</option>`).join('');
+}
+function officeChanged(){const raw=document.getElementById('officeSelect').value,o=raw===''?null:offices[Number(raw)];document.getElementById('pincode').value=o?o.pincode:'';document.getElementById('officeName').value=o?o.officeName:'';document.getElementById('officeType').value=o?o.officeType:'';}
+async function loadDeliveryTab(){
+ if(!sb){status('Supabase connection is not ready.','err');return;}
+ // Temporary test mode: no Google Login required for viewing or editing.
+ currentUser=null;
+ currentRole='public';
+ await loadAll();
+}
+async function loadAll(){
+ if(!sb){status('Supabase connection is not ready.','err');return;}
+ status('Delivery records ಲೋಡ್ ಆಗುತ್ತಿದೆ…');
+ try{
+   // Build TD office dropdown locally from the provided TD allowlist.
+   // Do not download the entire All-India ntd_master table when opening this tab.
+   if(!offices.length){
+     offices=Array.from(TD_OFFICE_ALLOWLIST).map((entry,i)=>{
+       const parts=entry.split('|');
+       const pin=String(parts[0]||'').trim();
+       const listedName=String(parts.slice(1).join('|')||'').trim();
+       const officeName=titleOfficeName(listedName);
+       const officeType=officeTypeFromName(listedName)||'Branch Office';
+       return {pincode:pin,office_name:officeName,office_type:officeType,
+         officeName,officeType,officeKey:String(i)};
+     });
+   }
+   populateOffices();
+   const {data:rd,error:re}=await sb.from('delivery_places')
+     .select('*').order('office_name').limit(5000);
+   if(re)throw re;
+   records=(rd||[]).map(r=>({...r,officeName:r.office_name,officeType:r.office_type,
+     locatedVillage:r.located_village,deliveryPlaces:r.delivery_places,
+     deliveryBeat:r.delivery_beat,remarks:r.remarks}));
+   renderRecords();
+   status('TD Offices: '+offices.length+' | Delivery records: '+records.length+
+     ' | Public test mode: Add/Edit available','ok');
+ }catch(e){status('ಡೇಟಾ ಪಡೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ: '+e.message,'err');}
+}
+function searchChanged(){renderRecords();const open=!document.getElementById('formPanel').classList.contains('hidden');if(open){const cur=document.getElementById('officeSelect').value;const o=cur===''?null:offices[Number(cur)];populateOffices(o?o.officeKey:'');}}
+function renderRecords(){const q=(document.getElementById('searchBox').value||'').trim().toLocaleLowerCase(),b=document.getElementById('recordsBody');if(!q){document.getElementById('count').textContent='ಹುಡುಕಲು Pincode / Office / Place / Beat ನಮೂದಿಸಿ';b.innerHTML='<tr><td colspan="8">Enter a PIN Code, Office, Village or Beat in the search box above.</td></tr>';return;}const list=records.filter(r=>[r.pincode,r.officeName,r.officeType,r.locatedVillage,r.deliveryPlaces,r.deliveryBeat,r.remarks].some(v=>String(v||'').toLocaleLowerCase().includes(q)));document.getElementById('count').textContent=list.length+' ದಾಖಲೆಗಳು';if(!list.length){b.innerHTML='<tr><td colspan="8">No matching records found.</td></tr>';return;}b.innerHTML=list.map(r=>`<tr><td>${esc(r.pincode)}</td><td>${esc(r.officeName)}</td><td>${esc(r.officeType)}</td><td>${esc(r.locatedVillage)}</td><td>${esc(r.deliveryPlaces)}</td><td>${esc(r.deliveryBeat)}</td><td>${esc(r.remarks)}</td><td><div class="actions"><button class="secondary" onclick="editRecord('${esc(r.id)}')">Edit</button>${currentRole==='admin'?`<button class="danger" onclick="removeRecord('${esc(r.id)}')">Delete</button>`:''}</div></td></tr>`).join('');}
+function newRecord(){
+ editingId=null;document.getElementById('recordForm').reset();populateOffices();officeChanged();
+ document.getElementById('formTitle').textContent='ಹೊಸ Delivery Place ಸೇರಿಸಿ';document.getElementById('saveBtn').textContent='Save';
+ formStatus('Login ಇಲ್ಲದೆ ಹೊಸ Delivery Place ಸೇರಿಸಬಹುದು.','');document.getElementById('formPanel').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});
+}
+function editRecord(id){
+ const r=records.find(x=>x.id===id);if(!r)return;editingId=r.id;
+ const o=offices.find(x=>String(x.pincode)===String(r.pincode)&&normalizeOfficeName(x.officeName)===normalizeOfficeName(r.officeName));
+ populateOffices(o?o.officeKey:'');document.getElementById('officeSelect').value=o?String(offices.indexOf(o)):'';
+ officeChanged();document.getElementById('locatedVillage').value=r.locatedVillage||'';
+ document.getElementById('deliveryPlaces').value=r.deliveryPlaces||'';document.getElementById('deliveryBeat').value=r.deliveryBeat||'';
+ document.getElementById('remarks').value=r.remarks||'';document.getElementById('formTitle').textContent='Delivery Place ತಿದ್ದುಪಡಿ';
+ document.getElementById('saveBtn').textContent='Update';formStatus('');document.getElementById('formPanel').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});
+}
+function closeForm(){document.getElementById('formPanel').classList.add('hidden');editingId=null;}
+async function submitForm(e){
+  e.preventDefault();
+  const wasEditing = Boolean(editingId);
+
+  // Temporary test mode: editing does not require Google Login.
+
+  const selected = document.getElementById('officeSelect').value;
+  const o = selected === '' ? null : offices[Number(selected)];
+  if (!o) {
+    formStatus('ಮೊದಲು Office ಆಯ್ಕೆಮಾಡಿ.','err');
+    return;
+  }
+
+  const pin = String(o.pincode || '').trim();
+  if (!/^\d{6}$/.test(pin)) {
+    formStatus('ಆಯ್ಕೆ ಮಾಡಿದ Office‌ನ Pincode 6 ಅಂಕೆಗಳಾಗಿರಬೇಕು.','err');
+    return;
+  }
+
+  const place = document.getElementById('deliveryPlaces').value.trim();
+  const beat = document.getElementById('deliveryBeat').value.trim();
+  const village = document.getElementById('locatedVillage').value.trim();
+  const remarks = document.getElementById('remarks').value.trim();
+
+  if (!place || place.length > 200) {
+    formStatus('Delivery Places ಖಾಲಿ ಇರಬಾರದು; ಗರಿಷ್ಠ 200 ಅಕ್ಷರಗಳು.','err');
+    return;
+  }
+  if (beat.length > 100 || village.length > 150 || remarks.length > 500) {
+    formStatus('Beat ಗರಿಷ್ಠ 100, Village 150, Remarks 500 ಅಕ್ಷರಗಳು ಮಾತ್ರ.','err');
+    return;
+  }
+
+  const d = {
+    pincode: pin,
+    office_name: String(o.officeName || '').trim(),
+    office_type: String(o.officeType || '').trim() || null,
+    located_village: village || null,
+    delivery_places: place,
+    delivery_beat: beat || null,
+    remarks: remarks || null
+  };
+
+  const btn = document.getElementById('saveBtn');
+  btn.disabled = true;
+  const oldButtonText = btn.textContent;
+  btn.textContent = wasEditing ? 'Update ಆಗುತ್ತಿದೆ…' : 'Save ಆಗುತ್ತಿದೆ…';
+
+  try {
+    let result;
+    if (wasEditing) {
+      result = await sb.from('delivery_places').update(d).eq('id', editingId);
+    } else {
+      // Public Add: no Google Login check here.
+      result = await sb.from('delivery_places').insert(d);
+    }
+
+    if (result.error) throw result.error;
+
+    closeForm();
+    await loadAll();
+    status(
+      wasEditing ? 'Delivery Place ತಿದ್ದುಪಡಿ ಉಳಿಸಲಾಗಿದೆ.' : 'ಹೊಸ Delivery Place ಸೇರಿಸಲಾಗಿದೆ.',
+      'ok'
+    );
+  } catch (err) {
+    formStatus('ಉಳಿಸಲಾಗಲಿಲ್ಲ: ' + (err.message || 'Unknown error'), 'err');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = editingId ? 'Update' : 'Save';
+    if (document.getElementById('formPanel').classList.contains('hidden')) {
+      btn.textContent = oldButtonText === 'Update' ? 'Update' : 'Save';
+    }
+  }
+}
+async function removeRecord(id){if(currentRole!=='admin'){status('Delete ಮಾಡಲು Admin ಅನುಮತಿ ಅಗತ್ಯ.','err');return;}const r=records.find(x=>x.id===id);if(!r||!confirm('ಈ Delivery Place ಅಳಿಸಬೇಕೇ?\n'+r.deliveryPlaces+' — '+r.officeName))return;const {error}=await sb.from('delivery_places').delete().eq('id',id);if(error){status('ಅಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ: '+error.message,'err');return;}await loadAll();status('ದಾಖಲೆ ಅಳಿಸಲಾಗಿದೆ.','ok');}
+if(initSupabase()){
+ document.getElementById('ntdStatus').textContent='PIN Code ಅಥವಾ Office Name ನಮೂದಿಸಿ ಹುಡುಕಿ.';
+ // Google OAuth is intentionally not invoked in this temporary test build.
+}
+</script></body></html>
